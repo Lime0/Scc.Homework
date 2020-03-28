@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery 연습하고 가기!</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style type="text/css">
+        #domain-q5 {
+            display: none;
+        }
+
+        #warning-q5 {
+            display: none;
+        }
+
+        div.question-box {
+            margin: 10px 0 20px 0;
+        }
+    </style>
+    <script>
+        function q1() {
+            let input_string = $('#input-q1').val();
+            if (input_string == '') {
+                alert('"입력하세요"');
+                $('#input-q1').focus();
+            }
+            else {
+            }
+        }
+        function q5() {
+            input_email = $('#input-q5').val();
+            if (input_email.indexOf('@') != -1) {
+                let domain = input_email.split('@')[1].split('.')[0];
+                $('#domain-q5').text(domain).show();
+                $('#warning-q5').hide();
+            }
+            else {
+                $('#warning-q5').css("color", "#FF0000").show();
+                $('#domain-q5').hide();
+            }
+        }
+
+        function q7() {
+            let input_name = $('#input-q7').val();
+            let temp_html = '<li>' + input_name + '</li>';
+            $('#names-q7').append(temp_html);
+
+        }
+
+        function q7_remove() {
+            $('#names-q7').empty();
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <h1>jQuery + Javascript의 조합을 연습하자!</h1>
+
+    <div class="question-box">
+        <h5>1. 빈칸 체크 함수 만들기</h5>
+        <input id="input-q1" type="text" /> <button onclick="q1()">클릭</button>
+    </div>
+    <hr />
+    <div class="question-box">
+        <h5>2. 이메일 판별 함수 만들기</h5>
+        <input id="input-q5" type="text" /> <button onclick="q5()">클릭</button>
+        <h6 id="domain-q5">도메인</h6>
+        <h6 id="warning-q5" class="warning">이메일이 아닙니다.</h6>
+    </div>
+    <hr />
+    <div class="question-box">
+        <h5>3. HTML 붙이기/지우기 연습</h5>
+        <input id="input-q7" type="text" placeholder="여기에 이름을 입력" />
+        <button onclick="q7()">이름 붙이기</button>
+        <button onclick="q7_remove()">다지우기</button>
+        <ul id="names-q7">
+            <li>세종대왕</li>
+            <li>임꺽정</li>
+        </ul>
+    </div>
+</body>
+
+</html>
